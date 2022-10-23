@@ -8,4 +8,9 @@ public partial class TopicCard
 {
     [Parameter]
     public TopicModel Topic { get; set; }
+    
+    private void Search(string s)
+    {
+        NavigationManager.NavigateTo($"/Search/{s}");
+    }
 }

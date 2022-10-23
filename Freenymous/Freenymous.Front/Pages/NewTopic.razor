@@ -3,6 +3,11 @@
 @using Freenymous.Front.Services
 @inject ITopicService TopicService
 @inject NavigationManager NavigationManager
+@inject ILocalStorageService LocalStorageService
+<div style="width:100%; padding: 10px" class="card">
+    <Disclaimer Title="Disclaimer" Collapsed="true"></Disclaimer>
+</div>
+
 <div class="input-group">
     <input @bind="@_topic.Name"  type="text" class="form-control" placeholder="Type topic name..." aria-label="Type topic name..." aria-describedby="basic-addon2">
 </div>

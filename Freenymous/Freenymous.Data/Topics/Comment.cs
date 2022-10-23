@@ -27,4 +27,6 @@ public class Comment
     public string Html { get; set; }
     
     public DateTime? CreationDate { get; set; }
+    
+    public string? AccessCode { get; set; }
 }

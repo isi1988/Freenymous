@@ -2,9 +2,14 @@
 @using Freenymous.Front.Services
 @using Freenymous.Front.Controls
 @inject ITopicService TopicService
+@inject ILocalStorageService LocalStorageService
+
+<div style="width:100%; padding: 10px" class="card">
+    <Disclaimer Title="Disclaimer" Collapsed="true"></Disclaimer>
+</div>
 
 <h4>@_topic?.Name</h4>
-<h6>@_topic?.CreationDate?.ToString("dd:MM:yyyy hh:mm")</h6>
+<h6>@_topic?.CreationDate?.ToString("dd:MM:yyyy HH:mm")</h6>
 
 <div style="margin-top: 10px">
     @((MarkupString)_topic?.Html)
@@ -23,3 +28,9 @@
         <CommentCard Comment="@comment"></CommentCard>
     }
 </div>
+@if (_canLoadMore)
+{
+    <div>
+        <button @onclick="LoadMore" class="btn btn-outline-secondary" type="button">Load more</button>
+    </div>
+}

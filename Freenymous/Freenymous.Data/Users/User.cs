@@ -26,6 +26,8 @@ public class User
     
     public string RefreshUpdateCode { get; set; }
     
+    public string AccessCode { get; set; }
+    
     [JsonIgnore]
     public DateTime ActiveDateTime { get; set; }
     

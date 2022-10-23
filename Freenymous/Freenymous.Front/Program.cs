@@ -13,6 +13,6 @@ builder.Services.AddScoped(sp => new HttpClient {BaseAddress = new Uri(GlobalPro
 builder.Services.AddScoped<IHttpService, HttpService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ITopicService, TopicService>();
-
+builder.Services.AddScoped<ILocalStorageService, LocalStorageService>();
 
 await builder.Build().RunAsync();

@@ -1,24 +1,20 @@
 ﻿@page "/"
+@page "/Search/{SearchStr}"
 @using Freenymous.Front.Services
 @using Freenymous.Front.Controls
 @inject NavigationManager NavigationManager
 @inject ITopicService TopicService
 <div style="width:100%; padding: 10px" class="card">
-    <h3>Disclamer</h3>
-    <h7>
-        <p>The corner of the free Internet is a purely entertainment portal. We are against violence, drugs and child pornography.</p>
-        <p>The service is provided as is - you can use it at your own risk. If you feel uncomfortable or some words offend you - just close the page.</p>
-        <p>We do not store user data and do not use cookies for this. Everything you write is absolutely anonymous - enjoy.</p>
-    </h7>
+    <Disclaimer Title="Disclaimer" Collapsed="false"></Disclaimer>
 </div>
 <div style="width:100%; padding: 10px; margin-top: 5px" class="card">
     <div class="input-group">
         <div class="input-group-prepend">
             <button @onclick="@(_=> NavigationManager.NavigateTo("/NewTopic"))" class="btn btn-outline-secondary" type="button">New topic</button>
         </div>
-        <input type="text" class="form-control" placeholder="Type text or tags to search topic..." aria-label="Type text or tags to search topic..." aria-describedby="basic-addon2">
+        <input @bind="SearchStr" type="text" class="form-control" placeholder="Type text or tags to search topic..." aria-label="Type text or tags to search topic..." aria-describedby="basic-addon2">
         <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button">Search</button>
+            <button @onclick="() => Search()" class="btn btn-outline-secondary" type="button">Search</button>
         </div>
     </div>
 </div>
@@ -28,3 +24,9 @@
         <TopicCard Topic="@topic"></TopicCard>
     } 
 </div>
+@if (_canLoadMore)
+{
+    <div>
+        <button @onclick="LoadMore" class="btn btn-outline-secondary" type="button">Load more</button>
+    </div>
+}

@@ -23,9 +23,17 @@ public class Topic
     
     public string? UserName { get; set; }
     
+    public string? AccessCode { get; set; }
+    
     [JsonIgnore]
     public User? User { get; set; }
     
     [JsonIgnore]
-    public List<Comment> Comments { get; set; }
+    public List<Comment>? Comments { get; set; }
+    
+    public long CommentCount { get; set; }
+    
+    public long CommentTopLevelCount { get; set; }
+
+    public List<int> ViewIds { get; set; } = new List<int>();
 }

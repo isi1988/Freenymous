@@ -6,10 +6,7 @@
         </div>
         <div style="display: inline-block">
             <div style="font-size: 10px">
-                @Comment?.UserName
-            </div>
-            <div style="font-size: 10px">
-                @Comment?.CreationDate?.ToString("dd:MM:yyyy hh:mm")
+                @Comment?.UserName at  @Comment?.CreationDate?.ToString("dd:MM:yyyy hh:mm")
             </div>
             <div>
                     @((MarkupString)Comment?.Html)

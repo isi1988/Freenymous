@@ -12,4 +12,9 @@ public class TopicModel
     
     public long UserId { get; set; }
     
+    public long CommentCount { get; set; }
+    
+    public long CommentTopLevelCount { get; set; }
+    
+    public long ViewCount { get; set; }
 }

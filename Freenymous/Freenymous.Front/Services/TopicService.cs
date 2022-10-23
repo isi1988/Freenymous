@@ -7,12 +7,18 @@ namespace Freenymous.Front.Services;
 
 public interface ITopicService
 {
+
+    Task<int> Count(string search);
     Task<Topic> Get(long id);
     Task<IEnumerable<TopicModel>> Get(int skip = 0, int take = 10);
     
     Task<IEnumerable<Comment>> Comments(long topicId, int skip = 0, int take = 10);
+
+    Task<IEnumerable<TopicModel>> Get(string search, int skip = 0, int take = 10);
     
     Task<Comment> Comment(Comment comment);
+    
+    Task<int> Count();
     
     Task Post(Topic topic);
 
@@ -37,6 +43,11 @@ internal class TopicService : ITopicService
     {
         return await _httpService.Get<IEnumerable<TopicModel>>($"/Topic/{skip}/{take}");
     }
+    
+    public async Task<IEnumerable<TopicModel>> Get(string search, int skip = 0, int take = 10)
+    {
+        return await _httpService.Get<IEnumerable<TopicModel>>($"/Topic/{search}/{skip}/{take}");
+    }
 
     public async Task<IEnumerable<Comment>> Comments(long topicId, int skip = 0, int take = 10)
     {
@@ -46,6 +57,17 @@ internal class TopicService : ITopicService
     public async Task<Comment> Comment(Comment comment)
     {
         return await _httpService.Post<Comment>($"/Topic/Comment", comment);
+    }
+
+    public async Task<int> Count()
+    {
+        var s = await _httpService.GetString($"/Topic/Count");
+        return int.Parse(s);
+    }
+    public async Task<int> Count(string search)
+    {
+        var s = await _httpService.GetString($"/Topic/Count/{search}");
+        return int.Parse(s);
     }
 
     public async Task Post(Topic topic)

@@ -1,14 +1,20 @@
 @using Freenymous.Data
 @using Freenymous.Front.Services
 @inject IUserService UserService
+@inject ILocalStorageService LocalStorageService
+@if (User != null)
+{
+    <div class="card" style="padding: 10px; text-align: center">
+        <div>
+            <h4>It's you</h4>
+        </div>
+        <img style="border-radius: 64px; margin: auto" width="128px" height="128px" src="@(GlobalProperties.ApiUrl + "/User/Avatar/" + User?.Id + ".jpg")"/>
+        <h4>@User?.FirstName @User?.LastName</h4>
+        <h5>@User?.Country</h5>
+        <div>
+            <h6 style="@(_needProlong ? "color:red" : ""); display: inline-block">@_refreshTime.Minutes.ToString("D2"):@_refreshTime.Seconds.ToString("D2")</h6>
+            <img @onclick="@Prolong" src="images/refresh-30.png" width="16px" height="16px" alt="" style="display: inline-block; margin-left: 5px; cursor: pointer"/>
 
-<div class="card" style="padding: 10px; text-align: center">
-    <img style="border-radius: 64px; margin: auto" width="128px" height="128px" src="@(GlobalProperties.ApiUrl + "/User/Avatar/" + User?.Id + ".jpg")"/>
-    <h4>@User?.FirstName @User?.LastName</h4>
-    <h5>@User?.Country</h5>
-    <div>
-        <h6 style="@(_needProlong ? "color:red" : ""); display: inline-block">@_refreshTime</h6>
-        <img @onclick="@Prolong" src="images/refresh-30.png" width="16px" height="16px" alt="" style="display: inline-block; margin-left: 5px; cursor: pointer"/>
-
+        </div>
     </div>
-</div>
+}

@@ -1,0 +1,38 @@
+<div class="collapsable">
+    <div class="title" @onclick="@Toggle">
+        @if (Collapsed)
+        {
+            <span class="oi oi-chevron-right mr-1"></span>
+        }
+        else
+        {
+            <span class="oi oi-chevron-bottom mr-1"></span>
+        }
+        @Title
+    </div>
+    @if (!string.IsNullOrEmpty(Value))
+    {
+    <div class="value">
+        <h4><span class="badge badge-success">@Value</span></h4>
+    </div>
+    }
+</div>
+ 
+@if (!Collapsed)
+{
+    <div class="collapsable-panel">
+ <h7>
+        <p>The corner of the free Internet is a purely entertainment portal. We are against violence, drugs and child pornography.</p>
+        <p>The service is provided as is - you can use it at your own risk. If you feel uncomfortable or some words offend you - just close the page.</p>
+        <p>We do not store user data and do not use cookies for this. Everything you write is absolutely anonymous - enjoy.</p>
+        
+        <p><b>If you want to support the project donate to us</b></p>
+        <p>Bitcoin: bitcoin:15g71DSEnWrDSfQmUNEL3JSyhgqymTwvSd</p>
+        <p>Etherium: 0x5eAeDdf09671F8215E0A97d6650408dE4c039073</p>
+    </h7>
+    </div>
+}
+ 
+@code {
+    
+}

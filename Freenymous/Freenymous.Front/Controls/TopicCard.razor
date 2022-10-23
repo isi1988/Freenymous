@@ -1,19 +1,32 @@
 @inject NavigationManager NavigationManager
-<div @onclick="@(_ => {NavigationManager.NavigateTo("/Topic/"+Topic?.Id);})" class="card topic-card" style="margin-top: 5px; margin-bottom: 5px; cursor: pointer">
+<div  class="card topic-card" style="margin-top: 5px; margin-bottom: 5px; ">
     <div>
-        <div  style="display: inline-block;margin: 5px">
+        <div  style="display: inline-block;margin: 5px;    vertical-align: top;">
             <img style="border-radius: 64px; margin: auto" width="64px" height="64px" src="@(GlobalProperties.ApiUrl + "/User/Avatar/" + Topic?.UserId + ".jpg")"/>
         </div>
         <div style="display: inline-block">
-            <div style="font-size: 16px">
+            <div style="font-size: 16px; cursor: pointer" @onclick="@(_ => {NavigationManager.NavigateTo("/Topic/"+Topic?.Id);})">
                 <span>@Topic.Name</span>
             </div>
             <div style="font-size: 10px">
                 @Topic?.CreationDate?.ToString("dd:MM:yyyy hh:mm")
             </div>
+            <div>
+                @foreach (var tag in @Topic?.Tags ?? new List<string>())
+                {
+                    <span @onclick="@(() => Search(tag))" class="badge bg-success" style="margin-right: 5px;cursor: pointer">@tag</span>
+                }
+            </div>
         </div>
          <div  style="display: inline-block;margin: 5px; float: right">
-         
+             <div>
+                 <img style="border-radius: 64px; margin: auto" width="32px" height="32px" src="/images/comments-50.png"/>
+                 <span>@Topic?.CommentCount</span>
+             </div>
+                <div>
+                    <img style="border-radius: 64px; margin: auto" width="32px" height="32px" src="/images/eye-50.png"/>
+                                     <span>@Topic?.ViewCount</span>
+                          </div>
              </div>
     </div>
 </div>

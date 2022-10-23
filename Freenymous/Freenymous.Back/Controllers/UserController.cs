@@ -34,6 +34,7 @@ public class UserController : ControllerBase
         user.ActiveDateTime = DateTime.Now;
         user.IsBusy = true;
         user.RefreshUpdateCode = Guid.NewGuid().ToString();
+        user.AccessCode = Guid.NewGuid().ToString();
         _context.SaveChanges();
         return user;
     }
@@ -46,6 +47,7 @@ public class UserController : ControllerBase
         user.ActiveDateTime = DateTime.Now;
         user.IsBusy = true;
         user.RefreshUpdateCode = Guid.NewGuid().ToString();
+        user.AccessCode = Guid.NewGuid().ToString();
         _context.SaveChanges();
         return user;
     }

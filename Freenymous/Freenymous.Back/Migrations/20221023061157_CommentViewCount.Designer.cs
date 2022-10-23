@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Freenymous.Back;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -12,9 +13,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Freenymous.Back.Migrations
 {
     [DbContext(typeof(MainDbContext))]
-    partial class MainDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221023061157_CommentViewCount")]
+    partial class CommentViewCount
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,9 +32,6 @@ namespace Freenymous.Back.Migrations
                         .HasColumnType("bigint");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
-
-                    b.Property<string>("AccessCode")
-                        .HasColumnType("text");
 
                     b.Property<DateTime?>("CreationDate")
                         .HasColumnType("timestamp without time zone");
@@ -72,13 +71,7 @@ namespace Freenymous.Back.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
-                    b.Property<string>("AccessCode")
-                        .HasColumnType("text");
-
                     b.Property<long>("CommentCount")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("CommentTopLevelCount")
                         .HasColumnType("bigint");
 
                     b.Property<DateTime?>("CreationDate")
@@ -122,10 +115,6 @@ namespace Freenymous.Back.Migrations
                         .HasColumnType("bigint");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
-
-                    b.Property<string>("AccessCode")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<DateTime>("ActiveDateTime")
                         .HasColumnType("timestamp without time zone");
