@@ -1,0 +1,25 @@
+@page "/Topic/{Id:long}"
+@using Freenymous.Front.Services
+@using Freenymous.Front.Controls
+@inject ITopicService TopicService
+
+<h4>@_topic?.Name</h4>
+<h6>@_topic?.CreationDate?.ToString("dd:MM:yyyy hh:mm")</h6>
+
+<div style="margin-top: 10px">
+    @((MarkupString)_topic?.Html)
+</div>
+
+<div style="margin-top: 5px">
+    <Editor @ref="@_richEditor"></Editor>
+</div>
+<div>
+    <button @onclick="Save" class="btn btn-outline-secondary" type="button">Save</button>
+</div>
+
+<div>
+    @foreach (var comment in _comments)
+    {
+        <CommentCard Comment="@comment"></CommentCard>
+    }
+</div>

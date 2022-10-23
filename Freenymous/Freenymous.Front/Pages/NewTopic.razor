@@ -1,0 +1,17 @@
+@page "/NewTopic"
+@using Freenymous.Front.Controls
+@using Freenymous.Front.Services
+@inject ITopicService TopicService
+@inject NavigationManager NavigationManager
+<div class="input-group">
+    <input @bind="@_topic.Name"  type="text" class="form-control" placeholder="Type topic name..." aria-label="Type topic name..." aria-describedby="basic-addon2">
+</div>
+<div class="input-group">
+    <input @bind="@_topic.StrTags"  type="text" class="form-control" placeholder="Type tags..." aria-label="Type tags..." aria-describedby="basic-addon2">
+</div>
+<div style="margin-top: 5px">
+    <Editor @ref="@_richEditor"></Editor>
+</div>
+<div>
+       <button @onclick="Save" class="btn btn-outline-secondary" type="button">Save</button>
+</div>

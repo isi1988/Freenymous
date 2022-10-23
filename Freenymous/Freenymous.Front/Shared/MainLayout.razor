@@ -1,17 +1,16 @@
 ﻿@inherits LayoutComponentBase
-
+@using Freenymous.Front.Controls
 <div class="page">
-    <div class="sidebar">
-        <NavMenu/>
-    </div>
-
     <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
-
-        <article class="content px-4">
-            @Body
-        </article>
+        <CascadingValue Value="@_myUserControl">
+            <div class="row" style="padding: 10px">
+                <div class="col-xl-2 col-lg-3 col-md-4" style="text-align: center">
+                    <MyUser @ref="@_myUserControl"></MyUser>
+                </div>
+                <div class="col-xl-10 col-lg-9 col-md-8">
+                  @Body
+                </div>
+            </div>
+        </CascadingValue>
     </main>
 </div>

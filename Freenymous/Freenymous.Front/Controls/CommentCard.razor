@@ -1,0 +1,22 @@
+@inject NavigationManager NavigationManager
+<div class="card comment-card" style="margin-top: 5px; margin-bottom: 5px; cursor: pointer">
+    <div>
+        <div  style="display: inline-block;margin: 5px">
+            <img style="border-radius: 64px; margin: auto" width="64px" height="64px" src="@(GlobalProperties.ApiUrl + "/User/Avatar/" + Comment?.UserId + ".jpg")"/>
+        </div>
+        <div style="display: inline-block">
+            <div style="font-size: 10px">
+                @Comment?.UserName
+            </div>
+            <div style="font-size: 10px">
+                @Comment?.CreationDate?.ToString("dd:MM:yyyy hh:mm")
+            </div>
+            <div>
+                    @((MarkupString)Comment?.Html)
+            </div>
+        </div>
+         <div  style="display: inline-block;margin: 5px; float: right">
+         
+             </div>
+    </div>
+</div>
